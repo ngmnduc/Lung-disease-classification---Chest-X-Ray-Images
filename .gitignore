@@ -1,0 +1,25 @@
+# .gitignore content
+
+# Bỏ qua thư mục dữ liệu nặng
+data/raw/
+data/processed/
+data/features/
+
+# Bỏ qua file cache của Python
+__pycache__/
+*.pyc
+
+# Bỏ qua file cấu hình môi trường ảo
+venv/
+env/
+.env
+
+# Bỏ qua file model nặng (nếu > 100MB)
+models/saved/*.h5
+
+# Bỏ qua file IDE
+.vscode/
+.idea/
+
+# Bỏ qua các file checkpoint của notebook
+.ipynb_checkpoints
