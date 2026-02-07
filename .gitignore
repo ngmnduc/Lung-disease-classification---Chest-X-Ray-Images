@@ -1,25 +1,69 @@
-# .gitignore content
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 
-# Bỏ qua thư mục dữ liệu nặng
+
+venv/
+env/
+ENV/
+.venv/
+.env
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+.ipynb_checkpoints/
+*.ipynb
+
+
 data/raw/
 data/processed/
 data/features/
+data/chest_xray/
 
-# Bỏ qua file cache của Python
-__pycache__/
-*.pyc
+data/features/*.npy
+data/features/*.png
+data/features/*.jpg
+data/features/*.pdf
 
-# Bỏ qua file cấu hình môi trường ảo
-venv/
-env/
-.env
+src/data/processed/*.npy
 
-# Bỏ qua file model nặng (nếu > 100MB)
+
 models/saved/*.h5
+*.h5
+*.hdf5
+*.weights
+*.pkl
+*.joblib
 
-# Bỏ qua file IDE
-.vscode/
-.idea/
+.keras/
 
-# Bỏ qua các file checkpoint của notebook
-.ipynb_checkpoints
+
+*.log
+*.out
+*.err
+logs/
+
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+
+*.tmp
+*.temp
+*.cache
