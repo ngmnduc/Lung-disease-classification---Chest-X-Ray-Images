@@ -1,11 +1,11 @@
 import os
 import numpy as np
-from src.models import ModelTrainer # Giả sử bạn để file trên trong thư mục src
+from src.models import ModelTrainer
 
 def main():
     # 1. Load dữ liệu đã qua PCA
-    input_dir = 'data/features'
-    output_results_dir = 'data/results'
+    input_dir = r'D:/Lung-disease-classification---Chest-X-Ray-Images/data/feature'
+    output_results_dir = r'D:/Lung-disease-classification---Chest-X-Ray-Images/data/results'
     os.makedirs(output_results_dir, exist_ok=True)
 
     print("Loading PCA features...")
