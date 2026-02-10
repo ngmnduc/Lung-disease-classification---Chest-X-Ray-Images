@@ -250,8 +250,8 @@ def extract_and_reduce_features(data_dir='src/data/processed',
 
 
 if __name__ == '__main__':
-    DATA_DIR = 'src/data/processed'  
-    OUTPUT_DIR = 'data/features'   
+    DATA_DIR = r'D:/Lung-disease-classification---Chest-X-Ray-Images/data/processed_data'  
+    OUTPUT_DIR = r'D:/Lung-disease-classification---Chest-X-Ray-Images/data/feature'   
     
     X_train_pca, X_test_pca, y_train, y_test = extract_and_reduce_features(
         data_dir=DATA_DIR,
