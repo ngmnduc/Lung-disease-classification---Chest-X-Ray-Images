@@ -1,69 +1,42 @@
+# --- FILE RÁC HỆ THỐNG (Giữ nguyên) ---
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+.DS_Store
+Thumbs.db
+desktop.ini
 
-
+# --- MÔI TRƯỜNG ẢO (Giữ nguyên) ---
 venv/
 env/
 ENV/
 .venv/
 .env
-
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-desktop.ini
 
+# --- FILE DỮ LIỆU NẶNG (QUAN TRỌNG: CHẶN CÁI NÀY) ---
+# Chặn toàn bộ file numpy (X_train nặng 4GB) ở bất cứ đâu
+*.npy
 
+# Chặn thư mục chứa ảnh gốc tải về
+data/chest_xray/
+data/raw/
+
+# Chặn thư mục processed (chứa ảnh nén dạng numpy)
+data/processed_data/
+
+# --- FILE MODEL & KẾT QUẢ (QUAN TRỌNG: CHO PHÉP CÁI NÀY) ---
+# Tuyệt đối KHÔNG chặn *.pkl vì cần đẩy model lên cho Streamlit
+# Nếu có dòng *.pkl ở đây thì xóa đi nhé!
+
+# Chặn file model quá nặng (nếu có dùng deep learning h5)
+*.h5
+*.weights
+
+# --- LOGS & KHÁC ---
+*.log
 .ipynb_checkpoints/
 *.ipynb
-
-
-data/raw/
-data/processed/
-data/features/
-data/chest_xray/
-
-data/features/*.npy
-data/features/*.png
-data/features/*.jpg
-data/features/*.pdf
-
-src/data/processed/*.npy
-
-
-models/saved/*.h5
-*.h5
-*.hdf5
-*.weights
-*.pkl
-*.joblib
-
-.keras/
-
-
-*.log
-*.out
-*.err
-logs/
-
-
-.pytest_cache/
-.coverage
-htmlcov/
-
-
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-
-*.tmp
-*.temp
-*.cache
