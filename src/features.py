@@ -134,7 +134,6 @@ def extract_and_reduce_features(data_dir, output_dir, n_components=None, varianc
     
     os.makedirs(output_dir, exist_ok=True)
     
-    # 1. Load Processed Data
     print("\n[STEP 1] Loading processed data...")
     try:
         X_train = np.load(os.path.join(data_dir, 'X_train.npy'))
@@ -148,32 +147,27 @@ def extract_and_reduce_features(data_dir, output_dir, n_components=None, varianc
     print(f"Train data: {X_train.shape}, Labels: {y_train.shape}")
     print(f"Test data: {X_test.shape}")
     
-    # 2. Extract Features
     print("\n[STEP 2] Extracting features using ResNet50...")
     extractor = FeatureExtractor(model_name=model_name)
     X_train_features = extractor.extract_features(X_train, batch_size=32)
     X_test_features = extractor.extract_features(X_test, batch_size=32)
     
-    # 3. PCA Reduction
     print("\n[STEP 3] Applying PCA for dimensionality reduction...")
     reducer = DimensionalityReducer(n_components=n_components, variance_ratio=variance_ratio)
     
     X_train_pca = reducer.fit_transform(X_train_features)
     X_test_pca = reducer.transform(X_test_features)
     
-    # --- [IMPORTANT] Export PCA Transformer for Streamlit ---
     pca_pkl_path = os.path.join(output_dir, 'pca_transformer.pkl')
     joblib.dump(reducer.pca, pca_pkl_path)
     print(f"\n[SUCCESS] Saved PCA Transformer to: {pca_pkl_path}")
     
-    # 4. Save Features
     print("\n[STEP 4] Saving reduced features...")
     np.save(os.path.join(output_dir, 'X_train_pca.npy'), X_train_pca)
     np.save(os.path.join(output_dir, 'X_test_pca.npy'), X_test_pca)
     np.save(os.path.join(output_dir, 'y_train.npy'), y_train)
     np.save(os.path.join(output_dir, 'y_test.npy'), y_test)
     
-    # 5. Visualize
     print("\n[STEP 5] Creating visualizations...")
     visualizer = FeatureVisualizer()
     reducer.plot_variance_explained(save_path=os.path.join(output_dir, 'variance_explained.png'))
@@ -185,8 +179,7 @@ def extract_and_reduce_features(data_dir, output_dir, n_components=None, varianc
     return X_train_pca, X_test_pca, y_train, y_test
 
 if __name__ == '__main__':
-    # Define Paths
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Go up to root
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
     DATA_DIR = os.path.join(BASE_DIR, 'data', 'processed_data')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'data', 'feature')
     
